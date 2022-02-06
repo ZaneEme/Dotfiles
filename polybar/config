@@ -1,0 +1,188 @@
+[colors]
+background = #32302f
+lowlight = #504945
+highlight = #928374
+foreground = #ebdbb2
+red = #fb4934
+green = #b8bb26
+yellow = #fabd2f
+blue = #83a598
+purple = #d3869b
+aqua = #8ec07c
+orange = #fe8019
+
+[bar/example]
+monitor = ${env:MONITOR:eDP}
+dpi = 120
+
+width = 100%
+height = 3.5%
+offset-x = 0
+offset-y = 0
+
+background = #00000000
+foreground = ${colors.foreground}
+
+; bottom underline
+line-size = 5
+line-color = #f00
+
+border-size = 5
+border-bottom-size = 5
+border-color = #00000000
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 1
+module-margin-right = 0.5
+
+font-0 = Iosevka:pixelsize=10
+font-1 = IBM Plex Mono
+font-2 = IBM Plex Sans
+
+modules-left = i3 title
+modules-right = battery pulseaudio wlan date
+
+tray-position = none
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+;ws-icon-0 = 1;Δ
+;ws-icon-1 = 2;Θ
+;ws-icon-2 = 3;Ξ
+;ws-icon-3 = 4;Σ
+;ws-icon-4 = 5;Φ
+;ws-icon-5 = 6;Ψ
+;ws-icon-6 = 7;Ω
+;ws-icon-7 = 8;δ
+;ws-icon-8 = 9;λ
+
+label-mode-padding = 1
+label-mode-foreground = #000
+label-mode-background = ${colors.background}
+
+label-focused = %index%
+label-focused-background = ${colors.background}
+label-focused-foreground = ${colors.foreground}
+label-focused-underline= ${colors.highlight}
+label-focused-padding = 1
+
+label-unfocused = %index%
+label-unfocused-background = ${colors.background}
+label-unfocused-foreground = ${colors.foreground}
+label-unfocused-underline = ${colors.lowlight}
+label-unfocused-padding = 1
+
+label-visible = %index%
+label-visible-background = ${colors.background}
+label-visible-foreground = ${colors.foreground}
+label-visible-underline = ${colors.lowlight}
+label-visible-padding = 1
+
+label-urgent = %index%
+label-urgent-background = ${colors.background}
+label-urgent-underline = ${colors.red}
+label-urgent-padding = 1
+
+
+[module/title]
+type = internal/xwindow
+format-foreground = ${colors.foreground}
+format-underline = ${colors.blue}
+format-padding = 1
+format-background = ${colors.background}
+label-maxlen = 80
+label-empty = Desktop
+
+[module/wlan]
+type = internal/network
+interface = wlo1
+interval = 3.0
+format-connected-padding = 1
+format-connected-background = ${colors.background}
+format-connected = <label-connected>
+format-connected-underline = ${colors.green}
+label-connected =  %essid%
+format-disconnected-padding = 1
+format-disconnected-background = ${colors.background}
+format-disconnected = <label-disconnected>
+format-disconnected-underline = ${self.format-connected-underline}
+label-disconnected = %ifname% disconnected
+label-disconnected-foreground = ${colors.red}
+
+[module/date]
+type = internal/date
+interval = 5
+date = %D
+time = %I:%M %p
+format-underline = ${colors.aqua}
+format-padding = 1
+format-background = ${colors.background}
+label = %time% %date%
+
+[module/pulseaudio]
+type = internal/pulseaudio
+format-volume = <ramp-volume> <label-volume>
+format-volume-padding = 1
+format-volume-background = ${colors.background}
+format-volume-underline = ${colors.purple}
+
+ramp-volume-0 =  
+ramp-volume-1 =  
+ramp-volume-2 = 
+
+format-muted-underline = ${colors.purple}
+format-muted-background = ${colors.background}
+format-muted-padding = 2
+label-muted = 婢
+
+[module/battery]
+type = internal/battery
+battery = BAT1
+adapter = ACAD
+full-at = 99
+
+format-charging-padding = 1
+format-charging = <ramp-capacity> <label-charging>
+format-charging-background = ${colors.background}
+format-charging-foreground = ${colors.foreground}
+format-charging-underline = ${colors.aqua}
+
+label-charging = %percentage%% 
+; label-charging-foreground = ${colors.green}
+
+label-discharging = %percentage%%
+
+format-discharging-padding = 1
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-foreground = ${colors.foreground}
+format-discharging-underline = ${colors.aqua}
+format-discharging-background = ${colors.background}
+
+format-full = %{T5}%{T-} FULL
+format-full-foreground = ${colors.green}
+format-full-underline = ${self.format-charging-underline}
+format-full-background = ${colors.background}
+format-full-padding = 1
+
+
+ramp-capacity-0 = %{T5}%{T-} 
+ramp-capacity-1 = %{T5}%{T-}
+ramp-capacity-2 = %{T5}%{T-}
+ramp-capacity-3 = %{T5}%{T-} 
+ramp-capacity-4 = %{T5}%{T-} 
+ramp-capacity-0-foreground = ${colors.red}
+
+
+
+[global/wm]
+margin-top = 10
+margin-bottom = 10

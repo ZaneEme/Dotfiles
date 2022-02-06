@@ -1,0 +1,13 @@
+[global]
+# Your Spotify account name.
+username = "garqwan"
+
+# Your Spotify account password.
+password = "!Sleeppuppy7"
+
+# a list of possible backends, run `spotifyd --help`.
+backend = "alsa" # use portaudio for macOS [homebrew]
+
+bitrate = 160
+
+proxy = "http://localhost:8888/callback"
